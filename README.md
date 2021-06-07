@@ -1,1 +1,3 @@
-# goit-react-hw-02-feedback
+# React Homework #2
+
+## Events and stats, forms
