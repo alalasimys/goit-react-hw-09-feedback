@@ -3,8 +3,9 @@ import { Component } from "react";
 //Components
 import Section from "./Components/Feedback/Section";
 import FeedbackOptions from "./Components/Feedback/FeedbackOptions";
-import FeedbackStats from "./Components/Feedback/FeedbackStats";
+import Statistics from "./Components/Feedback/Statistics";
 import Notification from "./Components/Feedback/Notification";
+import "./Components/Feedback/styles.css";
 
 class App extends Component {
   state = {
@@ -19,26 +20,30 @@ class App extends Component {
     }));
   };
 
-  getTotal = () => {
+  countTotalFeedback = () => {
     const { good, neutral, bad } = this.state;
 
     return good + neutral + bad;
   };
 
-  getPositivePercentage = () => {
+  countPositiveFeedbackPercentage = () => {
     const { good } = this.state;
-    return good ? Math.floor((good / this.getTotal()) * 100) : 0;
+    return good ? Math.floor((good / this.countTotalFeedback()) * 100) : 0;
   };
 
   render() {
     return (
       <Section>
-        <FeedbackOptions onChangeStats={this.handleChangeStats} />
-        {!!this.getTotal() ? (
-          <FeedbackStats
+        <h3>PLEASE LEAVE YOUR FEEDBACK</h3>
+        <FeedbackOptions
+          options={this.state}
+          onLeaveFeedback={this.handleChangeStats}
+        />
+        {!!this.countTotalFeedback() ? (
+          <Statistics
             stats={this.state}
-            total={this.getTotal()}
-            positive={this.getPositivePercentage()}
+            total={this.countTotalFeedback()}
+            positivePercentage={this.countPositiveFeedbackPercentage()}
           />
         ) : (
           <Notification message="No feedback yet" />
