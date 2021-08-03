@@ -3,9 +3,9 @@ import PropTypes from "prop-types";
 const Statistics = ({ stats, total, positivePercentage }) => {
   return (
     <div className="Statistics">
-      {Object.entries(stats).map((entry) => (
-        <p key={entry[0]}>
-          <span className="StateName">{entry[0]}:</span> {entry[1]}
+      {Object.entries(stats).map(([first, second]) => (
+        <p key={first}>
+          <span className="StateName">{first}:</span> {second}
         </p>
       ))}
       <p>Total: {total}</p>

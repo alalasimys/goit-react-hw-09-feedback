@@ -1,3 +1,3 @@
-# React Homework #2 -- Feedback counter
+# React Homework #9 -- Feedback counter React Hooks
 
-## Events, States, Forms
+## Events, useState, Forms
